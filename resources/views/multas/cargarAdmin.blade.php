@@ -38,7 +38,9 @@
                             <td><a href="{{ Route('multas.cargar', $multa) }}" class="badge bg-success">Cargar</a></td>
                         </tr>
                     @empty
-                        <tr>No hay multas disponibles...</tr>
+                    <tr><div class="callout callout-danger">
+                        <h5>No hay multas disponibles...</h5>
+                    </div></tr>
                     @endforelse
                 </tbody>
             </table>

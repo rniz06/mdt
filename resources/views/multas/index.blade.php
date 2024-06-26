@@ -25,21 +25,25 @@
         @if ($role == 'Admin')
             <h2>Usuarios con boletas Disponibles</h2>
             <div class="row col-12">
-            @foreach ($data as $usuario)                
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $usuario->multas_count }}<sup style="font-size: 20px"> Boletas Disponibles</sup>
-                                </h3>
-                                <p>{{ $usuario->name }}</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ver... <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>            
-            @endforeach
+            @forelse ($data as $usuario)
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{ $usuario->multas_count }}<sup style="font-size: 20px"> Boletas Disponibles</sup>
+                        </h3>
+                        <p>{{ $usuario->name }}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Ver... <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            @empty
+            <div class="col-12 callout callout-danger">
+                <h5>No hay usuarios con multas disponibles...</h5>
+            </div>
+            @endforelse
         </div>
         @elseif($role == 'TRANSITO-PMT')
             <h2>Multas en estado Cargado</h2>
