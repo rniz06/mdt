@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 4vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #780100;
+    border-radius: 1vh;
+}
+
+.header-info {
+
+    display: flex;
+    display: inline-block;
+    justify-items: center;
+    color: white;
+}
+
+.header-info {
+    text-align: center;
+}
