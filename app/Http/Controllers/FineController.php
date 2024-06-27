@@ -69,9 +69,10 @@ class FineController extends Controller
 
         if ($user->hasRole('Admin')) {
             // Mostrar todas las multas en estado Generado
-            $multas = $query->where('state', 'Generado')->orderBy('n_boleta')->paginate(5);
+            $heads = ['#', 'N° Boleta:', 'Asignado a:', ''];
+            $multas = $query->where('state', 'Generado')->orderBy('n_boleta')->get();
 
-            return view('multas.cargarAdmin', compact('multas'));
+            return view('multas.cargarAdmin', compact('multas', 'heads'));
         } elseif ($user->hasRole('TRANSITO-PMT')) {
             // Filtrar por el campo 'asignado_a' y el estado 'Generado'
             $multa = $query->where('user_id', $user->id)

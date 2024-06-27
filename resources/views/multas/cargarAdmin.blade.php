@@ -14,38 +14,25 @@
         </div>
     @endif
 
+
+
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Seleccionar Boleta:</h3>
+            <h3 class="card-title">Seleccionar boleta:</h3>
         </div>
 
-        <div class="card-body p-0">
-            <table class="table table-sm">
-                <thead>
+        <div class="card-body">
+            <x-adminlte-datatable id="table5" :heads="$heads" theme="light" striped hoverable compressed with-buttons>
+                    @foreach ($multas as $multa)
                     <tr>
-                        <th style="width: 10px">#</th>
-                        <th>N° Boleta:</th>
-                        <th>Asignado a:</th>
-                        <th style="width: 40px">Acciones</th>
+                        <td style="width: 1%">#</td>
+                        <td>{{ $multa->n_boleta }}</td>
+                        <td>{{ $multa->user->name }}</td>
+                        <td><a href="{{ Route('multas.cargar', $multa) }}" class="badge bg-success">Cargar</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse ($multas as $multa)
-                        <tr>
-                            <td>#</td>
-                            <td>{{ $multa->n_boleta }}</td>
-                            <td>{{ $multa->user->name }}</td>
-                            <td><a href="{{ Route('multas.cargar', $multa) }}" class="badge bg-success">Cargar</a></td>
-                        </tr>
-                    @empty
-                    <tr><div class="callout callout-danger">
-                        <h5>No hay multas disponibles...</h5>
-                    </div></tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    @endforeach
+            </x-adminlte-datatable>
         </div>
-
     </div>
 
 @stop
