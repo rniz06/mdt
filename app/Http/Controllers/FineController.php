@@ -113,7 +113,8 @@ class FineController extends Controller
         $multa->chapa_vehiculo = $request->chapa_vehiculo;
         $multa->lugar = $request->lugar;
         $multa->descripcion = $request->descripcion;
-        $multa->fecha_infraccion = $request->fecha_infraccion;
+        $fecha_infraccion= $request->fecha_infraccion;
+        $multa->fecha_infraccion = Carbon::parse($fecha_infraccion)->format('Y-m-d H-m-s');
 
         // Datos del infractor
         $multa->conductor = $request->conductor;
